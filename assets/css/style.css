@@ -337,7 +337,6 @@ section.hero .hero-header.move-left {
         width: 36rem;
         left: 150%;
         transform: translateX(0%) scale(3);
-        filter: opacity(5%);
     }
     section.hero .hero-header.move-left {
         left: 50%;
