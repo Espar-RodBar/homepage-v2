@@ -237,14 +237,14 @@ section.hero .hero-img-container {
     height: 20rem;
     border-radius: 50%;
     overflow: hidden;
-    filter: opacity(0%);
+    opacity: 0%;
     transform: translateX(-70vw) scale(3);
     transition: transform 1.5s, opacity 0.5s 1s;
 }
 
 section.hero .hero-img-container.move-right {
     transform: translateX(0vw) scale(1);
-    filter: opacity(100%);
+    opacity: 100%;
 }
 
 section.hero .hero-portrait {
@@ -266,7 +266,7 @@ section.hero .hero-header {
     gap: 1rem;
 
     transform: translateX(50vw) scale(2);
-    filter: opacity(5%);
+    opacity: 0%;
 
     transition: all 1.5s;
 }
@@ -288,7 +288,7 @@ section.hero .hero-header #hero-dinamic-text {
 
 section.hero .hero-header.move-left {
     transform: translateX(0vw) scale(1);
-    filter: opacity(100%);
+    opacity: 100%;
 }
 
 @media screen and (max-width: 56.3em) {
@@ -330,7 +330,6 @@ section.hero .hero-header.move-left {
     section.hero .hero-img-container.move-right {
         transform: translateX(-50%) scale(1);
         left: 50%;
-        filter: opacity(100%);
     }
 
     section.hero .hero-header {
@@ -343,7 +342,6 @@ section.hero .hero-header.move-left {
     section.hero .hero-header.move-left {
         left: 50%;
         transform: translateX(-50%) scale(1);
-        filter: opacity(100%);
     }
     section.hero .hero-header p {
         font-size: 5rem;
