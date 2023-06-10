@@ -406,21 +406,32 @@
         </section>
         <section class="section-contact" id="contact">
             <header class="section-contact-header"><h2>Contact</h2></header>
-            <form action="">
+            <form name="contact" method="POST" data-netlify="true">
                 <div class="input-wrapper">
                     <label for="name-input" class="name-lbl">name</label>
-                    <input type="text" class="name-input" id="name-input" />
+                    <input
+                        type="text"
+                        class="name-input"
+                        id="name-input"
+                        required
+                    />
                     <label for="email-input" class="email-lbl">email</label>
-                    <input type="text" class="email-input" id="email-input" />
+                    <input
+                        type="text"
+                        class="email-input"
+                        id="email-input"
+                        required
+                    />
                     <label for="message-input" class="message-lbl"
                         >message</label
                     >
                     <textarea
                         class="message-input"
                         id="message-input"
+                        required
                     ></textarea>
                 </div>
-                <button class="send-btn">Send message!</button>
+                <button type="submit" class="send-btn">Send message!</button>
             </form>
         </section>
         <footer class="footer">
