@@ -324,7 +324,7 @@ section.hero .hero-header.move-left {
         left: -80%;
         top: 15rem;
 
-        transform: translateX(0%) scale(5);
+        transform: translateX(0%) scale(3);
     }
     section.hero .hero-img-container.move-right {
         transform: translateX(-50%) scale(1);
