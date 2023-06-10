@@ -180,27 +180,31 @@ section > header > h2 {
     }
 
     .header > .main-nav ul {
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 5rem;
 
+        filter: opacity(0%);
+
         top: 0;
         left: 0;
         width: 100%;
-        height: 0;
+        height: 0vh;
         background: rgba(255, 255, 255, 0.569);
         backdrop-filter: blur(5px);
         position: fixed;
 
         z-index: 1000;
+
+        transition: all 0.5s;
     }
 
     .header > .main-nav ul.show-flex {
         height: 100vh;
+        filter: opacity(100%);
         display: flex;
-        transition: all 0.3s;
     }
 
     .header > .main-nav ul li {
@@ -233,8 +237,14 @@ section.hero .hero-img-container {
     height: 20rem;
     border-radius: 50%;
     overflow: hidden;
-
+    filter: opacity(1%);
+    transform: translateX(-70vw) scale(3);
     transition: all 1.5s;
+}
+
+section.hero .hero-img-container.move-right {
+    transform: translateX(0vw) scale(1);
+    filter: opacity(100%);
 }
 
 section.hero .hero-portrait {
@@ -255,6 +265,9 @@ section.hero .hero-header {
     justify-content: center;
     gap: 1rem;
 
+    transform: translateX(50vw) scale(2);
+    filter: opacity(5%);
+
     transition: all 1.5s;
 }
 
@@ -271,6 +284,11 @@ section.hero .hero-header #hero-dinamic-text {
     margin-top: 2rem;
     font-size: 3rem;
     height: 2rem;
+}
+
+section.hero .hero-header.move-left {
+    transform: translateX(0vw) scale(1);
+    filter: opacity(100%);
 }
 
 @media screen and (max-width: 56.3em) {
@@ -303,18 +321,29 @@ section.hero .hero-header #hero-dinamic-text {
 
     section.hero .hero-img-container {
         position: absolute;
-        left: 50%;
+        left: -80%;
         top: 15rem;
-        transform: translateX(-50%);
+
+        transform: translateX(0%) scale(5);
+    }
+    section.hero .hero-img-container.move-right {
+        transform: translateX(-50%) scale(1);
+        left: 50%;
+        filter: opacity(100%);
     }
 
     section.hero .hero-header {
         position: absolute;
         width: 36rem;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 150%;
+        transform: translateX(0%) scale(3);
+        filter: opacity(5%);
     }
-
+    section.hero .hero-header.move-left {
+        left: 50%;
+        transform: translateX(-50%) scale(1);
+        filter: opacity(100%);
+    }
     section.hero .hero-header p {
         font-size: 5rem;
         margin-bottom: 26rem;
@@ -426,7 +455,7 @@ section.hero .hero-header #hero-dinamic-text {
 
 @media screen and (max-width: 34em) {
     .project-card {
-        height: auto;
+        /* height: auto; */
     }
 }
 
@@ -760,25 +789,16 @@ section.hero .hero-header #hero-dinamic-text {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-.move-right {
-    transform: translateX(-50vw) scale(3);
-    filter: opacity(1%);
-}
-
-.move-left {
-    transform: translateX(50vw) scale(2);
-    filter: opacity(5%);
-}
 
 @media screen and (max-width: 34em) {
-    /* for specificity added section and classes to the movements */
+    /* for specificity added section and classes to the movements
     section.hero .hero-header.move-left {
         transform: translateX(40vw) scale(2);
     }
 
     section.hero .hero-img-container.move-right {
         transform: translateX(-50vw) scale(3.5);
-    }
+    } */
 }
 
 @keyframes rotate {

@@ -98,10 +98,8 @@ function writeDinamicText(phrases) {
 }
 
 function moveHeroElements() {
-    document
-        .querySelector(".hero-img-container")
-        .classList.remove("move-right");
-    document.querySelector(".hero-header").classList.remove("move-left");
+    document.querySelector(".hero-img-container").classList.add("move-right");
+    document.querySelector(".hero-header").classList.add("move-left");
 }
 
 changePortrait(portraitsEls);
