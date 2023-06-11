@@ -1,29 +1,18 @@
 const portraitsEls = document.querySelectorAll(".hero-portrait");
 const dynamicTextEl = document.querySelector("#hero-dinamic-text");
-const navBrightEl = document.querySelector(".header .main-nav ul::after");
+
 const mainNavWrapEl = document.getElementById("main-nav-wrap");
-const burgerBtnEl = document.querySelector(".burger-icon-open");
-const closeBtnEl = document.querySelector(".burger-icon-close");
 
-mainNavWrapEl.addEventListener("click", function (ev) {
-    const targetEl = ev.target;
+const mobileMenuBtn = document.querySelector(".mobile-nav-burger-btn");
+const menuBackdropEl = document.querySelector(".menu-backdrop-layer");
+const mainNavWrapperEl = document.querySelector(".main-nav-links-wrapper");
 
-    if (targetEl.classList.contains("burger-icon-open")) {
-        // open nav menu
-        mainNavWrapEl.querySelector("ul").classList.add("show-flex");
-        burgerBtnEl.classList.add("hide");
-        closeBtnEl.classList.remove("hide");
-    } else if (
-        targetEl.classList.contains("main-nav-links-container") ||
-        targetEl.classList.contains("burger-icon-close") ||
-        targetEl.classList.contains("main-nav-link")
-    ) {
-        // close nav menu
-        mainNavWrapEl.querySelector("ul").classList.remove("show-flex");
-        burgerBtnEl.classList.remove("hide");
-        closeBtnEl.classList.add("hide");
-    }
-});
+const cellMenuActClassFlag = "cell--active";
+const mainLinkCSS = "main-nav-link";
+
+const pageState = {
+    isCellMenuAct: false,
+};
 
 const phrases = [
     "I write code!!!",
@@ -48,10 +37,6 @@ function changePortrait(portraits, time = "4000") {
     };
 
     setInterval(swapPortraits, time);
-}
-
-function lightElement(element) {
-    element.classList.toggle("light");
 }
 
 function writeDinamicText(phrases) {
@@ -104,8 +89,67 @@ function moveHeroElements() {
 
 changePortrait(portraitsEls);
 writeDinamicText(phrases);
-lightElement(mainNavWrapEl);
-
-setInterval(lightElement.bind(null, mainNavWrapEl), "40000");
 
 window.addEventListener("load", moveHeroElements);
+
+// Add/remove class functions
+function addClass(className, el) {
+    el.classList.add(className);
+}
+
+function remvClass(className, el) {
+    el.classList.remove(className);
+}
+
+// Nav handler
+function activateMobileMenu() {
+    if (pageState.isCellMenuAct) {
+        new Promise((res, rej) =>
+            res(remvClass(cellMenuActClassFlag, menuBackdropEl))
+        )
+            .then(() =>
+                setTimeout(remvClass, 300, cellMenuActClassFlag, mobileMenuBtn)
+            )
+            .then(() =>
+                setTimeout(
+                    remvClass,
+                    300,
+                    cellMenuActClassFlag,
+                    mainNavWrapperEl
+                )
+            )
+            .then(() => (pageState.isCellMenuAct = false))
+            .catch((err) => console.log(err));
+    } else {
+        new Promise((res, rej) => {
+            res(addClass(cellMenuActClassFlag, mobileMenuBtn));
+        })
+            .then(() => addClass(cellMenuActClassFlag, menuBackdropEl))
+            .then(() =>
+                setTimeout(
+                    addClass,
+                    600,
+                    cellMenuActClassFlag,
+                    mainNavWrapperEl
+                )
+            )
+            .then(() => (pageState.isCellMenuAct = true))
+            .catch((err) => console.log(err));
+    }
+}
+
+// When a menu link is activated in mobile, close the menu.
+function closeMainNavClick(e) {
+    if (pageState.isCellMenuAct && e.target.classList.contains(mainLinkCSS)) {
+        setTimeout(activateMobileMenu, 0);
+    }
+}
+
+// Events
+mobileMenuBtn.addEventListener("click", () => {
+    activateMobileMenu();
+});
+
+mainNavWrapperEl.addEventListener("click", (e) => {
+    closeMainNavClick(e);
+});
