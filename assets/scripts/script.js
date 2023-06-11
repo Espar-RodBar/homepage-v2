@@ -75,7 +75,7 @@ function writeDinamicText(phrases) {
             phraseToWrite += lettersArray[index] + "_";
             index++;
         } else {
-            phraseToWrite = phraseToWrite.slice(0, index);
+            phraseToWrite = phraseToWrite.slice(0, index) + "_";
             index--;
         }
         dynamicTextEl.innerHTML = phraseToWrite;
