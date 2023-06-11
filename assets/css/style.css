@@ -855,8 +855,8 @@ section.hero .hero-header.move-left {
     content: "";
     position: absolute;
     left: 50%;
-    min-width: 400vw;
-    min-height: 400vw;
+    min-width: 400rem;
+    min-height: 400rem;
     background-color: rgba(70, 70, 255, 0.471);
     animation-name: rotate;
     animation-iteration-count: infinite;
@@ -878,17 +878,6 @@ section.hero .hero-header.move-left {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-
-@media screen and (max-width: 34em) {
-    /* for specificity added section and classes to the movements
-    section.hero .hero-header.move-left {
-        transform: translateX(40vw) scale(2);
-    }
-
-    section.hero .hero-img-container.move-right {
-        transform: translateX(-50vw) scale(3.5);
-    } */
-}
 
 @keyframes rotate {
     0% {
