@@ -1,0 +1,39 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  --main-black: #0f0f0f;
+  --main-grey: #232d3f;
+  --main-green: #005b41;
+  --ascent-green: #008170;
+  --light-black: #444444;
+  --light-grey: rgb(102, 113, 134);
+  --light-green: rgb(0, 149, 107);
+  --light-ascent-green: #00c4aa;
+  --dark-black: #000000;
+  --dark-grey: #0b0e14;
+  --dark-green: #00291d;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+}
